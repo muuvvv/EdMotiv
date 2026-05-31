@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EdMotiv – методический тулбокс мотивационной поддержки</title>
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --bg-soft: #fffaf2;
+      --text: #1f2933;
+      --muted: #5f6b7a;
+      --accent: #6f5df6;
+      --accent-dark: #4f3fd1;
+      --accent-soft: #ebe7ff;
+      --green: #dff3e7;
+      --orange: #ffe8c7;
+      --card: #ffffff;
+      --border: #e6ded2;
+      --shadow: 0 18px 45px rgba(31, 41, 51, 0.08);
+      --radius: 24px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      overflow: hidden;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 244, 238, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(230, 222, 210, 0.8);
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 24px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #9f8cff);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 12px 28px rgba(111, 93, 246, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-dark);
+    }
+
+    .nav-cta {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: var(--text);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(31, 41, 51, 0.18);
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .hero {
+      padding: 92px 0 78px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(111, 93, 246, 0.22), transparent 66%);
+      top: -160px;
+      right: -120px;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.95;
+      letter-spacing: -0.075em;
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .hero-text {
+      font-size: 21px;
+      color: var(--muted);
+      max-width: 690px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions,
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(111, 93, 246, 0.26);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(111, 93, 246, 0.32);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-note {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .hero-card::before {
+      content: "EdMotiv";
+      position: absolute;
+      top: -18px;
+      right: 24px;
+      background: var(--text);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .diagnostic-preview {
+      display: grid;
+      gap: 14px;
+    }
+
+    .preview-line {
+      padding: 16px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+    }
+
+    .preview-line strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .preview-arrow {
+      text-align: center;
+      color: var(--accent-dark);
+      font-weight: 900;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--accent-dark);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 4.6vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      font-size: 19px;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 26px rgba(31, 41, 51, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.025em;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    .quote-box {
+      margin-top: 28px;
+      padding: 26px;
+      border-radius: var(--radius);
+      background: var(--text);
+      color: #fff;
+      font-size: 20px;
+      line-height: 1.45;
+    }
+
+    .quote-box span {
+      color: #d8d1ff;
+      font-weight: 800;
+    }
+
+    .solution {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: start;
+    }
+
+    .flow {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: #fff;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 20px rgba(31, 41, 51, 0.04);
+    }
+
+    .step-num {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .audience-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .check-item {
+      padding: 18px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .check-item::before {
+      content: "✓";
+      color: var(--accent-dark);
+      margin-right: 8px;
+      font-weight: 900;
+    }
+
+    .arcs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .arcs-card {
+      padding: 26px;
+      border-radius: var(--radius);
+      background: #fff;
+      border: 1px solid var(--border);
+      min-height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .arcs-card::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      right: -42px;
+      bottom: -48px;
+    }
+
+    .arcs-letter {
+      position: relative;
+      z-index: 1;
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      color: var(--accent-dark);
+      margin-bottom: 16px;
+    }
+
+    .arcs-card h3,
+    .arcs-card p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .toolbox {
+      background: #efece5;
+    }
+
+    .toolbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .toolbox-panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .toolbox-points {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .toolbox-point {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .toolbox-point span {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--green);
+      font-weight: 900;
+    }
+
+    .first-step {
+      background: linear-gradient(135deg, #ffffff, #f2efff);
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .question-card {
+      background: #fff;
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+    }
+
+    .question-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: var(--muted);
+    }
+
+    .question-card li {
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .question-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-dark);
+      font-weight: 900;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 32px;
+      box-shadow: 0 12px 28px rgba(31, 41, 51, 0.05);
+    }
+
+    .resource-card h3 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .resource-card p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .author {
+      background: var(--bg-soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .author-card {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 32px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .author-badge {
+      min-height: 250px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--accent-soft), var(--green));
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .author-badge strong {
+      font-size: 46px;
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .author-text p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .final-cta {
+      padding-bottom: 96px;
+    }
+
+    .cta-box {
+      text-align: center;
+      background: var(--text);
+      color: #fff;
+      border-radius: 40px;
+      padding: 56px 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(111, 93, 246, 0.32);
+      top: -120px;
+      left: -100px;
+    }
+
+    .cta-box h2,
+    .cta-box p,
+    .cta-box .cta-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box h2 {
+      max-width: 820px;
+      margin: 0 auto 18px;
+    }
+
+    .cta-box p {
+      max-width: 760px;
+      margin: 0 auto 30px;
+      color: #d8dde7;
+      font-size: 19px;
+    }
+
+    .cta-actions {
+      justify-content: center;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    @media (max-width: 960px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid,
+      .solution-grid,
+      .toolbox-grid,
+      .first-step,
+      .author-card {
+        grid-template-columns: 1fr;
+      }
+
+      .cards,
+      .arcs-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero {
+        padding-top: 62px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 28px, var(--max));
+      }
+
+      section {
+        padding: 62px 0;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .cards,
+      .arcs-grid,
+      .audience-list,
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .first-step,
+      .author-card,
+      .toolbox-panel,
+      .cta-box {
+        padding: 26px;
+        border-radius: 26px;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero-text,
+      .lead {
+        font-size: 17px;
+      }
+
+      .nav {
+        min-height: 66px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <a class="logo" href="#">
+          <span class="logo-mark">E</span>
+          <span>EdMotiv</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Основная навигация">
+          <a href="#problem">Проблема</a>
+          <a href="#solution">Решение</a>
+          <a href="#audience">Для кого</a>
+          <a href="#base">Основа</a>
+          <a href="#cta">Попробовать</a>
+        </nav>
+
+        <a class="nav-cta" href="#diagnostic">Диагностическая карта</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">Методический тулбокс для онлайн–репетитора</div>
+            <h1>Мемы с котиками не спасут урок</h1>
+            <p class="hero-text">
+              EdMotiv помогает репетитору не угадывать, чем заинтересовать подростка, а понять, где возникает мотивационная трудность, и выбрать инструмент под конкретную ситуацию занятия.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#diagnostic">Получить диагностическую карту</a>
+              <a class="btn btn-secondary" href="#longread">Прочитать лонгрид</a>
+            </div>
+
+            <p class="hero-note">
+              Для онлайн–репетиторов, которые работают с подростками 14–15 лет и готовят к ОГЭ.
+            </p>
+          </div>
+
+          <aside class="hero-card" aria-label="Схема работы EdMotiv">
+            <div class="diagnostic-preview">
+              <div class="preview-line">
+                <strong>Ситуация</strong>
+                Ученик молчит, избегает ответа или формально соглашается.
+              </div>
+              <div class="preview-arrow">↓</div>
+              <div class="preview-line">
+                <strong>Диагностика</strong>
+                Что не собрано: цель, первый шаг, уверенность, нагрузка, обратная связь или результат?
+              </div>
+              <div class="preview-arrow">↓</div>
+              <div class="preview-line">
+                <strong>Инструмент</strong>
+                Подбор мотивационной поддержки под конкретную педагогическую ситуацию.
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="problem">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Узнаваемая проблема</div>
+            <h2>Когда подготовка становится бесконечной</h2>
+            <p class="lead">
+              Репетитор старается сделать урок живее, но внешняя вовлечённость не всегда превращается в учебную мотивацию.
+            </p>
+          </div>
+
+          <div class="cards">
+            <div class="card">
+              <div class="card-icon">1</div>
+              <h3>Много времени на подготовку</h3>
+              <p>Репетитор тратит ресурс на подбор материалов, адаптацию заданий и оформление занятия.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">2</div>
+              <h3>Игры, мемы и интерактивы</h3>
+              <p>В урок добавляются внешние элементы вовлечения, но они не всегда решают педагогическую задачу.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">3</div>
+              <h3>Ученик не включается</h3>
+              <p>Подросток может смотреть на красивую презентацию, но не понимать смысл задания и не работать активно.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-icon">4</div>
+              <h3>ДЗ выполняется формально</h3>
+              <p>Домашняя работа делается частично, перед занятием, наугад или не выполняется вовсе.</p>
+            </div>
+          </div>
+
+          <div class="quote-box">
+            Проблема не всегда в том, что ученик <span>“ленится”</span>. Иногда в учебной ситуации не хватает понятной цели, посильного первого шага, уверенности, обратной связи или ощущения результата.
+          </div>
+        </div>
+      </section>
+
+      <section id="solution" class="solution">
+        <div class="container solution-grid">
+          <div class="section-head">
+            <div class="section-kicker">Что меняет EdMotiv</div>
+            <h2>Не украшать урок, а проектировать мотивацию</h2>
+            <p class="lead">
+              EdMotiv помогает перейти от хаотичной подготовки к более спокойной и осознанной работе: определить проблему, выбрать инструмент, встроить его в занятие и понять, какого эффекта ожидать.
+            </p>
+          </div>
+
+          <div class="flow" aria-label="Логика работы EdMotiv">
+            <div class="flow-step">
+              <span class="step-num">1</span>
+              <strong>Наблюдаемое поведение ученика</strong>
+            </div>
+            <div class="flow-step">
+              <span class="step-num">2</span>
+              <strong>Признаки мотивационной трудности</strong>
+            </div>
+            <div class="flow-step">
+              <span class="step-num">3</span>
+              <strong>Категория трудности</strong>
+            </div>
+            <div class="flow-step">
+              <span class="step-num">4</span>
+              <strong>Инструмент поддержки</strong>
+            </div>
+            <div class="flow-step">
+              <span class="step-num">5</span>
+              <strong>Применение на занятии</strong>
+            </div>
+            <div class="flow-step">
+              <span class="step-num">6</span>
+              <strong>Оценка результата</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="audience">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Для кого</div>
+            <h2>Для репетиторов, у которых уже есть запрос на инструменты</h2>
+            <p class="lead">
+              EdMotiv ориентирован на онлайн–репетиторов, работающих с подростками 14–15 лет в контексте подготовки к ОГЭ. Это специалисты, которые уже умеют преподавать, но сталкиваются с трудностями поддержания учебной мотивации и хотят не просто добавлять интерактивы, а систематизировать работу с вовлечённостью, уверенностью и самостоятельностью ученика.
+            </p>
+          </div>
+
+          <h3>EdMotiv особенно подходит, если:</h3>
+
+          <div class="audience-list">
+            <div class="check-item">ученик теряет внимание на занятии</div>
+            <div class="check-item">ученик избегает самостоятельной работы</div>
+            <div class="check-item">ученик боится ошибки или не уверен в ответе</div>
+            <div class="check-item">ученик формально соглашается, но не понимает материал</div>
+            <div class="check-item">репетитору приходится каждый раз заново придумывать, как включить ученика в работу</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="base" class="solution">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Педагогическая основа</div>
+            <h2>В основе – мотивационный дизайн и педагогическая логика</h2>
+            <p class="lead">
+              EdMotiv помогает репетитору выбирать инструмент не случайно, а в зависимости от того, какая мотивационная трудность проявляется в конкретной ситуации.
+            </p>
+          </div>
+
+          <div class="arcs-grid">
+            <div class="arcs-card">
+              <div class="arcs-letter">A</div>
+              <h3>Внимание</h3>
+              <p>Как привлечь и поддержать включённость ученика.</p>
+            </div>
+
+            <div class="arcs-card">
+              <div class="arcs-letter">R</div>
+              <h3>Значимость</h3>
+              <p>Как связать задание с целью и опытом ученика.</p>
+            </div>
+
+            <div class="arcs-card">
+              <div class="arcs-letter">C</div>
+              <h3>Уверенность</h3>
+              <p>Как сделать первый шаг посильным и понятным.</p>
+            </div>
+
+            <div class="arcs-card">
+              <div class="arcs-letter">S</div>
+              <h3>Удовлетворённость</h3>
+              <p>Как помочь ученику увидеть результат и прогресс.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="toolbox">
+        <div class="container toolbox-grid">
+          <div class="section-head">
+            <div class="section-kicker">Формат продукта</div>
+            <h2>Репетитору нужен не длинный курс, а инструмент, который можно встроить в урок</h2>
+            <p class="lead">
+              Во время занятия репетитору нужно удерживать содержание, ход объяснения, ответы ученика, эмоциональное состояние и признаки снижения мотивации. Поэтому EdMotiv устроен как методический тулбокс: он снижает неопределённость, помогает быстро распознать ситуацию и подобрать инструмент без лишней когнитивной нагрузки.
+            </p>
+          </div>
+
+          <div class="toolbox-panel">
+            <h3>Тулбокс помогает репетитору:</h3>
+
+            <div class="toolbox-points">
+              <div class="toolbox-point">
+                <span>1</span>
+                <div>
+                  <strong>Направлять внимание</strong>
+                  <p>Фокусироваться на важных сигналах поведения ученика.</p>
+                </div>
+              </div>
+
+              <div class="toolbox-point">
+                <span>2</span>
+                <div>
+                  <strong>Снижать нагрузку</strong>
+                  <p>Не держать все варианты реагирования только в рабочей памяти.</p>
+                </div>
+              </div>
+
+              <div class="toolbox-point">
+                <span>3</span>
+                <div>
+                  <strong>Соотносить ситуацию с инструментом</strong>
+                  <p>Выбирать поддержку под конкретную мотивационную трудность.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container first-step">
+          <div>
+            <div class="section-kicker">Первый шаг</div>
+            <h2>Начните с диагностической карты</h2>
+            <p class="lead">
+              Диагностическая карта EdMotiv помогает репетитору вспомнить конкретного ученика, пройти по вопросам и определить, где может возникать мотивационная трудность: в цели, первом шаге, уверенности, нагрузке, обратной связи или ощущении результата.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#diagnostic">Получить диагностическую карту</a>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <h3>Что можно проверить перед новой игрой?</h3>
+            <ul>
+              <li>Понятна ли ученику цель задания?</li>
+              <li>Есть ли посильный первый шаг?</li>
+              <li>Не перегружен ли материал?</li>
+              <li>Видит ли ученик свой прогресс?</li>
+              <li>Есть ли обратная связь, которая поддерживает действие?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container resource-grid">
+          <article id="longread" class="resource-card">
+            <div class="section-kicker">Лонгрид</div>
+            <h3>«Мемы с котиками не спасут урок»</h3>
+            <p>
+              Лонгрид объясняет, почему ученик не всегда включается в работу даже при красивых материалах, и показывает, как репетитору проектировать мотивацию через структуру урока, понятную цель, посильный первый шаг, уверенность, обратную связь и ощущение результата.
+            </p>
+            <a class="btn btn-secondary" href="#cta">Читать лонгрид</a>
+          </article>
+
+          <article id="diagnostic" class="resource-card">
+            <div class="section-kicker">Чек–лист / диагностическая карта</div>
+            <h3>7 вопросов перед тем, как добавлять ещё одну игру</h3>
+            <p>
+              Чек–лист помогает не добавлять интерактив “наугад”, а сначала понять, почему ученик не включается в работу.
+            </p>
+            <a class="btn btn-primary" href="#cta">Получить чек–лист</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="author">
+        <div class="container author-card">
+          <div class="author-badge">
+            <div>
+              <strong>EdMotiv</strong>
+              <p>из репетиторской практики и педагогического дизайна</p>
+            </div>
+          </div>
+
+          <div class="author-text">
+            <div class="section-kicker">Об авторе</div>
+            <h2>Почему появился EdMotiv</h2>
+            <p>
+              С 2021 года автор занимается репетиторством по русскому языку, а с 2025 года работает онлайн и фокусируется на подготовке к ОГЭ. В практике стало понятно, что яркие материалы сами по себе не гарантируют учебную мотивацию. Обучение в магистратуре по педагогическому дизайну помогло посмотреть на эту проблему через когнитивную нагрузку, мотивационный дизайн и научные подходы к проектированию обучения. Так появилась идея EdMotiv.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="final-cta">
+        <div class="container">
+          <div class="cta-box">
+            <h2>Попробуйте посмотреть на мотивацию ученика как на проектируемую ситуацию</h2>
+            <p>
+              EdMotiv помогает репетитору не угадывать, какой интерактив добавить, а понять, что именно мешает ученику включиться в работу, и выбрать инструмент под конкретную педагогическую ситуацию.
+            </p>
+
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="#diagnostic">Получить диагностическую карту</a>
+              <a class="btn btn-secondary" href="#longread">Прочитать лонгрид</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        EdMotiv – методический тулбокс мотивационной поддержки для онлайн–репетиторов.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const targetId = link.getAttribute("href");
+
+        if (targetId.length > 1) {
+          const target = document.querySelector(targetId);
+
+          if (target) {
+            event.preventDefault();
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
