@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EdMotiv – методический тулбокс мотивационной поддержки</title>
+  <title>EdMotiv – тулбокс для работы с мотивацией ученика</title>
   <style>
     :root {
       --bg: #f7f4ee;
@@ -14,7 +14,6 @@
       --accent-dark: #4f3fd1;
       --accent-soft: #ebe7ff;
       --green: #dff3e7;
-      --orange: #ffe8c7;
       --card: #ffffff;
       --border: #e6ded2;
       --shadow: 0 18px 45px rgba(31, 41, 51, 0.08);
@@ -57,7 +56,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(247, 244, 238, 0.88);
+      background: rgba(247, 244, 238, 0.9);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(230, 222, 210, 0.8);
     }
@@ -94,7 +93,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
       font-size: 15px;
       color: var(--muted);
     }
@@ -115,6 +114,7 @@
       font-weight: 700;
       font-size: 14px;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
     }
 
     .nav-cta:hover {
@@ -144,7 +144,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 56px;
       align-items: center;
       position: relative;
@@ -197,6 +197,8 @@
       border: 1px solid transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
       cursor: pointer;
+      font-family: inherit;
+      font-size: 15px;
     }
 
     .btn-primary {
@@ -273,7 +275,7 @@
     }
 
     .section-head {
-      max-width: 760px;
+      max-width: 780px;
       margin-bottom: 34px;
     }
 
@@ -613,6 +615,91 @@
       font-size: 18px;
     }
 
+    .request {
+      background: #efece5;
+    }
+
+    .request-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .request-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 15px;
+      font: inherit;
+      color: var(--text);
+      background: var(--bg-soft);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(111, 93, 246, 0.12);
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 14px 0 18px;
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--green);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .form-status.show {
+      display: block;
+    }
+
     .final-cta {
       padding-bottom: 96px;
     }
@@ -668,6 +755,13 @@
       font-size: 14px;
     }
 
+    @media (max-width: 1040px) {
+      .nav-links {
+        gap: 14px;
+        font-size: 14px;
+      }
+    }
+
     @media (max-width: 960px) {
       .nav-links {
         display: none;
@@ -677,7 +771,8 @@
       .solution-grid,
       .toolbox-grid,
       .first-step,
-      .author-card {
+      .author-card,
+      .request-grid {
         grid-template-columns: 1fr;
       }
 
@@ -712,14 +807,16 @@
       .cards,
       .arcs-grid,
       .audience-list,
-      .resource-grid {
+      .resource-grid,
+      .form-grid {
         grid-template-columns: 1fr;
       }
 
       .first-step,
       .author-card,
       .toolbox-panel,
-      .cta-box {
+      .cta-box,
+      .request-card {
         padding: 26px;
         border-radius: 26px;
       }
@@ -757,10 +854,10 @@
           <a href="#solution">Решение</a>
           <a href="#audience">Для кого</a>
           <a href="#base">Основа</a>
-          <a href="#cta">Попробовать</a>
+          <a href="#request">Заявка</a>
         </nav>
 
-        <a class="nav-cta" href="#diagnostic">Диагностическая карта</a>
+        <a class="nav-cta" href="#request">Оставить заявку</a>
       </div>
     </header>
 
@@ -768,37 +865,37 @@
       <section class="hero">
         <div class="container hero-grid">
           <div>
-            <div class="eyebrow">Методический тулбокс для онлайн–репетитора</div>
+            <div class="eyebrow">Для онлайн–репетиторов, которые готовят к ОГЭ</div>
             <h1>Мемы с котиками не спасут урок</h1>
             <p class="hero-text">
-              EdMotiv помогает репетитору не угадывать, чем заинтересовать подростка, а понять, где возникает мотивационная трудность, и выбрать инструмент под конкретную ситуацию занятия.
+              EdMotiv помогает понять, почему ученик не включается в работу, и подобрать инструмент под конкретную ситуацию на занятии.
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#diagnostic">Получить диагностическую карту</a>
+              <a class="btn btn-primary" href="#request">Оставить заявку</a>
               <a class="btn btn-secondary" href="#longread">Прочитать лонгрид</a>
             </div>
 
             <p class="hero-note">
-              Для онлайн–репетиторов, которые работают с подростками 14–15 лет и готовят к ОГЭ.
+              Это не длинный курс, а методический тулбокс: короткие опоры, диагностическая карта и готовые сценарии для урока.
             </p>
           </div>
 
           <aside class="hero-card" aria-label="Схема работы EdMotiv">
             <div class="diagnostic-preview">
               <div class="preview-line">
-                <strong>Ситуация</strong>
-                Ученик молчит, избегает ответа или формально соглашается.
+                <strong>На уроке что-то не работает</strong>
+                Ученик молчит, ждёт подсказку, не делает ДЗ или быстро теряет внимание.
               </div>
               <div class="preview-arrow">↓</div>
               <div class="preview-line">
-                <strong>Диагностика</strong>
-                Что не собрано: цель, первый шаг, уверенность, нагрузка, обратная связь или результат?
+                <strong>Мы не угадываем причину</strong>
+                Смотрим, что именно проседает: цель, первый шаг, уверенность, нагрузка, обратная связь или ощущение результата.
               </div>
               <div class="preview-arrow">↓</div>
               <div class="preview-line">
-                <strong>Инструмент</strong>
-                Подбор мотивационной поддержки под конкретную педагогическую ситуацию.
+                <strong>Выбираем действие</strong>
+                Берём инструмент, который можно встроить прямо в занятие.
               </div>
             </div>
           </aside>
@@ -808,41 +905,41 @@
       <section id="problem">
         <div class="container">
           <div class="section-head">
-            <div class="section-kicker">Узнаваемая проблема</div>
-            <h2>Когда подготовка становится бесконечной</h2>
+            <div class="section-kicker">Проблема</div>
+            <h2>Иногда урок красивый, а ученик всё равно не работает</h2>
             <p class="lead">
-              Репетитор старается сделать урок живее, но внешняя вовлечённость не всегда превращается в учебную мотивацию.
+              Многие репетиторы пытаются повысить вовлечённость через игры, презентации, мемы и интерактивы. Это может оживить занятие, но не всегда решает проблему мотивации.
             </p>
           </div>
 
           <div class="cards">
             <div class="card">
               <div class="card-icon">1</div>
-              <h3>Много времени на подготовку</h3>
-              <p>Репетитор тратит ресурс на подбор материалов, адаптацию заданий и оформление занятия.</p>
+              <h3>Подготовка занимает всё больше времени</h3>
+              <p>Нужно придумать задания, оформить материалы и ещё сделать так, чтобы подростку было не скучно.</p>
             </div>
 
             <div class="card">
               <div class="card-icon">2</div>
-              <h3>Игры, мемы и интерактивы</h3>
-              <p>В урок добавляются внешние элементы вовлечения, но они не всегда решают педагогическую задачу.</p>
+              <h3>Интерактивы не всегда помогают</h3>
+              <p>Игра есть, слайды красивые, но ученик всё равно отвечает односложно или ждёт готовый ответ.</p>
             </div>
 
             <div class="card">
               <div class="card-icon">3</div>
-              <h3>Ученик не включается</h3>
-              <p>Подросток может смотреть на красивую презентацию, но не понимать смысл задания и не работать активно.</p>
+              <h3>Причина не всегда очевидна</h3>
+              <p>Одинаковое молчание может означать усталость, страх ошибки, непонимание задания или отсутствие смысла.</p>
             </div>
 
             <div class="card">
               <div class="card-icon">4</div>
-              <h3>ДЗ выполняется формально</h3>
-              <p>Домашняя работа делается частично, перед занятием, наугад или не выполняется вовсе.</p>
+              <h3>Домашка делается формально</h3>
+              <p>Ученик может выполнить задание частично, наугад или прямо перед занятием.</p>
             </div>
           </div>
 
           <div class="quote-box">
-            Проблема не всегда в том, что ученик <span>“ленится”</span>. Иногда в учебной ситуации не хватает понятной цели, посильного первого шага, уверенности, обратной связи или ощущения результата.
+            Не всегда дело в том, что ученик <span>“ленится”</span>. Иногда в учебной ситуации просто не хватает понятной цели, маленького первого шага, уверенности, обратной связи или видимого результата.
           </div>
         </div>
       </section>
@@ -850,37 +947,37 @@
       <section id="solution" class="solution">
         <div class="container solution-grid">
           <div class="section-head">
-            <div class="section-kicker">Что меняет EdMotiv</div>
+            <div class="section-kicker">Решение</div>
             <h2>Не украшать урок, а проектировать мотивацию</h2>
             <p class="lead">
-              EdMotiv помогает перейти от хаотичной подготовки к более спокойной и осознанной работе: определить проблему, выбрать инструмент, встроить его в занятие и понять, какого эффекта ожидать.
+              EdMotiv помогает не добавлять ещё один случайный интерактив, а сначала разобраться, что происходит с учеником. После этого репетитор выбирает подходящий инструмент и спокойно встраивает его в занятие.
             </p>
           </div>
 
           <div class="flow" aria-label="Логика работы EdMotiv">
             <div class="flow-step">
               <span class="step-num">1</span>
-              <strong>Наблюдаемое поведение ученика</strong>
+              <strong>Замечаем поведение ученика</strong>
             </div>
             <div class="flow-step">
               <span class="step-num">2</span>
-              <strong>Признаки мотивационной трудности</strong>
+              <strong>Смотрим на признаки трудности</strong>
             </div>
             <div class="flow-step">
               <span class="step-num">3</span>
-              <strong>Категория трудности</strong>
+              <strong>Понимаем, что именно просело</strong>
             </div>
             <div class="flow-step">
               <span class="step-num">4</span>
-              <strong>Инструмент поддержки</strong>
+              <strong>Выбираем инструмент поддержки</strong>
             </div>
             <div class="flow-step">
               <span class="step-num">5</span>
-              <strong>Применение на занятии</strong>
+              <strong>Встраиваем его в урок</strong>
             </div>
             <div class="flow-step">
               <span class="step-num">6</span>
-              <strong>Оценка результата</strong>
+              <strong>Смотрим, стало ли ученику проще действовать</strong>
             </div>
           </div>
         </div>
@@ -890,20 +987,20 @@
         <div class="container">
           <div class="section-head">
             <div class="section-kicker">Для кого</div>
-            <h2>Для репетиторов, у которых уже есть запрос на инструменты</h2>
+            <h2>Для репетиторов, которые уже видят проблему мотивации</h2>
             <p class="lead">
-              EdMotiv ориентирован на онлайн–репетиторов, работающих с подростками 14–15 лет в контексте подготовки к ОГЭ. Это специалисты, которые уже умеют преподавать, но сталкиваются с трудностями поддержания учебной мотивации и хотят не просто добавлять интерактивы, а систематизировать работу с вовлечённостью, уверенностью и самостоятельностью ученика.
+              EdMotiv подойдёт онлайн–репетиторам, которые работают с подростками 14–15 лет и готовят к ОГЭ. Это не про то, чтобы заново учиться преподавать. Это про то, чтобы меньше гадать, почему ученик не включается, и быстрее находить понятное педагогическое действие.
             </p>
           </div>
 
           <h3>EdMotiv особенно подходит, если:</h3>
 
           <div class="audience-list">
-            <div class="check-item">ученик теряет внимание на занятии</div>
+            <div class="check-item">ученик быстро теряет внимание</div>
             <div class="check-item">ученик избегает самостоятельной работы</div>
             <div class="check-item">ученик боится ошибки или не уверен в ответе</div>
-            <div class="check-item">ученик формально соглашается, но не понимает материал</div>
-            <div class="check-item">репетитору приходится каждый раз заново придумывать, как включить ученика в работу</div>
+            <div class="check-item">ученик говорит “понял”, но потом не может сделать сам</div>
+            <div class="check-item">вы каждый раз заново придумываете, как его включить</div>
           </div>
         </div>
       </section>
@@ -911,10 +1008,10 @@
       <section id="base" class="solution">
         <div class="container">
           <div class="section-head">
-            <div class="section-kicker">Педагогическая основа</div>
-            <h2>В основе – мотивационный дизайн и педагогическая логика</h2>
+            <div class="section-kicker">Основа</div>
+            <h2>У EdMotiv есть педагогическая логика</h2>
             <p class="lead">
-              EdMotiv помогает репетитору выбирать инструмент не случайно, а в зависимости от того, какая мотивационная трудность проявляется в конкретной ситуации.
+              В основе продукта – модель ARCS. Она помогает смотреть на мотивацию не как на “есть или нет”, а как на несколько условий, которые можно поддерживать на уроке.
             </p>
           </div>
 
@@ -922,25 +1019,25 @@
             <div class="arcs-card">
               <div class="arcs-letter">A</div>
               <h3>Внимание</h3>
-              <p>Как привлечь и поддержать включённость ученика.</p>
+              <p>Как помочь ученику включиться и удержаться в работе.</p>
             </div>
 
             <div class="arcs-card">
               <div class="arcs-letter">R</div>
               <h3>Значимость</h3>
-              <p>Как связать задание с целью и опытом ученика.</p>
+              <p>Как показать, зачем нужно задание и с чем оно связано.</p>
             </div>
 
             <div class="arcs-card">
               <div class="arcs-letter">C</div>
               <h3>Уверенность</h3>
-              <p>Как сделать первый шаг посильным и понятным.</p>
+              <p>Как сделать первый шаг понятным и посильным.</p>
             </div>
 
             <div class="arcs-card">
               <div class="arcs-letter">S</div>
               <h3>Удовлетворённость</h3>
-              <p>Как помочь ученику увидеть результат и прогресс.</p>
+              <p>Как помочь ученику заметить результат и свой прогресс.</p>
             </div>
           </div>
         </div>
@@ -949,38 +1046,38 @@
       <section class="toolbox">
         <div class="container toolbox-grid">
           <div class="section-head">
-            <div class="section-kicker">Формат продукта</div>
-            <h2>Репетитору нужен не длинный курс, а инструмент, который можно встроить в урок</h2>
+            <div class="section-kicker">Формат</div>
+            <h2>Репетитору нужен инструмент, а не ещё один большой курс</h2>
             <p class="lead">
-              Во время занятия репетитору нужно удерживать содержание, ход объяснения, ответы ученика, эмоциональное состояние и признаки снижения мотивации. Поэтому EdMotiv устроен как методический тулбокс: он снижает неопределённость, помогает быстро распознать ситуацию и подобрать инструмент без лишней когнитивной нагрузки.
+              На занятии нужно одновременно держать в голове тему, объяснение, ответы ученика, его состояние и темп подготовки. Поэтому EdMotiv сделан как тулбокс: короткие опоры, карта диагностики и сценарии, которые можно применять без лишней перегрузки.
             </p>
           </div>
 
           <div class="toolbox-panel">
-            <h3>Тулбокс помогает репетитору:</h3>
+            <h3>Что даёт тулбокс:</h3>
 
             <div class="toolbox-points">
               <div class="toolbox-point">
                 <span>1</span>
                 <div>
-                  <strong>Направлять внимание</strong>
-                  <p>Фокусироваться на важных сигналах поведения ученика.</p>
+                  <strong>Помогает заметить важные сигналы</strong>
+                  <p>Например, отказ от ответа, тревогу из-за ошибки или избегание самостоятельной работы.</p>
                 </div>
               </div>
 
               <div class="toolbox-point">
                 <span>2</span>
                 <div>
-                  <strong>Снижать нагрузку</strong>
-                  <p>Не держать все варианты реагирования только в рабочей памяти.</p>
+                  <strong>Снижает нагрузку на репетитора</strong>
+                  <p>Не нужно каждый раз с нуля придумывать, что делать с мотивационной трудностью.</p>
                 </div>
               </div>
 
               <div class="toolbox-point">
                 <span>3</span>
                 <div>
-                  <strong>Соотносить ситуацию с инструментом</strong>
-                  <p>Выбирать поддержку под конкретную мотивационную трудность.</p>
+                  <strong>Связывает ситуацию с действием</strong>
+                  <p>Репетитор видит не просто проблему, а возможный следующий шаг.</p>
                 </div>
               </div>
             </div>
@@ -994,21 +1091,21 @@
             <div class="section-kicker">Первый шаг</div>
             <h2>Начните с диагностической карты</h2>
             <p class="lead">
-              Диагностическая карта EdMotiv помогает репетитору вспомнить конкретного ученика, пройти по вопросам и определить, где может возникать мотивационная трудность: в цели, первом шаге, уверенности, нагрузке, обратной связи или ощущении результата.
+              Диагностическая карта помогает взять конкретного ученика и спокойно проверить: что может мешать ему включиться в работу – цель, первый шаг, уверенность, нагрузка, обратная связь или ощущение результата.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#diagnostic">Получить диагностическую карту</a>
+              <a class="btn btn-primary" href="#request">Оставить заявку</a>
             </div>
           </div>
 
           <div class="question-card">
-            <h3>Что можно проверить перед новой игрой?</h3>
+            <h3>Перед новой игрой можно спросить себя:</h3>
             <ul>
-              <li>Понятна ли ученику цель задания?</li>
-              <li>Есть ли посильный первый шаг?</li>
-              <li>Не перегружен ли материал?</li>
-              <li>Видит ли ученик свой прогресс?</li>
-              <li>Есть ли обратная связь, которая поддерживает действие?</li>
+              <li>Ученик понимает, зачем делает это задание?</li>
+              <li>Ему понятен первый шаг?</li>
+              <li>Задание не выглядит слишком большим?</li>
+              <li>Он видит, что у него уже получается?</li>
+              <li>Обратная связь помогает действовать дальше?</li>
             </ul>
           </div>
         </div>
@@ -1020,18 +1117,18 @@
             <div class="section-kicker">Лонгрид</div>
             <h3>«Мемы с котиками не спасут урок»</h3>
             <p>
-              Лонгрид объясняет, почему ученик не всегда включается в работу даже при красивых материалах, и показывает, как репетитору проектировать мотивацию через структуру урока, понятную цель, посильный первый шаг, уверенность, обратную связь и ощущение результата.
+              В лонгриде разобрано, почему ученик может не включаться даже на красивом уроке, и как репетитору смотреть на мотивацию через структуру занятия, понятную цель, посильный шаг, уверенность, обратную связь и результат.
             </p>
-            <a class="btn btn-secondary" href="#cta">Читать лонгрид</a>
+            <a class="btn btn-secondary" href="#request">Хочу прочитать</a>
           </article>
 
           <article id="diagnostic" class="resource-card">
             <div class="section-kicker">Чек–лист / диагностическая карта</div>
             <h3>7 вопросов перед тем, как добавлять ещё одну игру</h3>
             <p>
-              Чек–лист помогает не добавлять интерактив “наугад”, а сначала понять, почему ученик не включается в работу.
+              Чек–лист помогает сначала понять, почему ученик не включается, и только потом выбирать приём для урока.
             </p>
-            <a class="btn btn-primary" href="#cta">Получить чек–лист</a>
+            <a class="btn btn-primary" href="#request">Хочу получить</a>
           </article>
         </div>
       </section>
@@ -1041,7 +1138,7 @@
           <div class="author-badge">
             <div>
               <strong>EdMotiv</strong>
-              <p>из репетиторской практики и педагогического дизайна</p>
+              <p>из практики репетитора и педагогического дизайна</p>
             </div>
           </div>
 
@@ -1049,22 +1146,85 @@
             <div class="section-kicker">Об авторе</div>
             <h2>Почему появился EdMotiv</h2>
             <p>
-              С 2021 года автор занимается репетиторством по русскому языку, а с 2025 года работает онлайн и фокусируется на подготовке к ОГЭ. В практике стало понятно, что яркие материалы сами по себе не гарантируют учебную мотивацию. Обучение в магистратуре по педагогическому дизайну помогло посмотреть на эту проблему через когнитивную нагрузку, мотивационный дизайн и научные подходы к проектированию обучения. Так появилась идея EdMotiv.
+              Автор EdMotiv с 2021 года занимается репетиторством по русскому языку, а с 2025 года работает онлайн и готовит школьников к ОГЭ. В практике стало понятно: красивые материалы помогают оформить урок, но сами по себе не создают мотивацию. Обучение в магистратуре по педагогическому дизайну помогло посмотреть на эту проблему через когнитивную нагрузку, мотивационный дизайн и научный подход к обучению.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section id="request" class="request">
+        <div class="container request-grid">
+          <div class="section-head">
+            <div class="section-kicker">Заявка</div>
+            <h2>Оставьте заявку на материалы EdMotiv</h2>
+            <p class="lead">
+              Укажите, что вам интересно получить: диагностическую карту, чек–лист или лонгрид. В поле с ситуацией можно коротко описать ученика или проблему, с которой вы чаще всего сталкиваетесь на занятиях.
+            </p>
+          </div>
+
+          <form class="request-card" id="requestForm">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="name">Имя</label>
+                <input id="name" name="name" type="text" placeholder="Как к вам обращаться" required />
+              </div>
+
+              <div class="form-field">
+                <label for="contact">Контакт</label>
+                <input id="contact" name="contact" type="text" placeholder="Telegram, почта или другой контакт" required />
+              </div>
+
+              <div class="form-field">
+                <label for="role">Вы кто?</label>
+                <select id="role" name="role" required>
+                  <option value="">Выберите вариант</option>
+                  <option>Онлайн–репетитор</option>
+                  <option>Учитель</option>
+                  <option>Методист</option>
+                  <option>Другое</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="material">Что отправить?</label>
+                <select id="material" name="material" required>
+                  <option value="">Выберите материал</option>
+                  <option>Диагностическую карту</option>
+                  <option>Чек–лист</option>
+                  <option>Лонгрид</option>
+                  <option>Хочу посмотреть всё</option>
+                </select>
+              </div>
+
+              <div class="form-field full">
+                <label for="situation">С какой ситуацией вы чаще всего сталкиваетесь?</label>
+                <textarea id="situation" name="situation" placeholder="Например: ученик не делает ДЗ, молчит на занятии, боится ошибиться, быстро теряет внимание"></textarea>
+              </div>
+            </div>
+
+            <p class="form-note">
+              Это демонстрационная форма для лендинга. Чтобы она реально отправляла заявки, нужно подключить почту, Google Forms, Tilda Forms или другой сервис приёма заявок.
+            </p>
+
+            <button class="btn btn-primary" type="submit">Оформить заявку</button>
+
+            <div class="form-status" id="formStatus">
+              Заявка оформлена в демоверсии. На реальном сайте сюда можно подключить отправку в почту, таблицу или форму.
+            </div>
+          </form>
         </div>
       </section>
 
       <section id="cta" class="final-cta">
         <div class="container">
           <div class="cta-box">
-            <h2>Попробуйте посмотреть на мотивацию ученика как на проектируемую ситуацию</h2>
+            <h2>Мотивацию можно не угадывать, а проектировать</h2>
             <p>
-              EdMotiv помогает репетитору не угадывать, какой интерактив добавить, а понять, что именно мешает ученику включиться в работу, и выбрать инструмент под конкретную педагогическую ситуацию.
+              EdMotiv помогает посмотреть на поведение ученика внимательнее: что именно мешает ему включиться в работу и какой инструмент поддержки можно попробовать на следующем занятии.
             </p>
 
             <div class="cta-actions">
-              <a class="btn btn-primary" href="#diagnostic">Получить диагностическую карту</a>
+              <a class="btn btn-primary" href="#request">Оставить заявку</a>
               <a class="btn btn-secondary" href="#longread">Прочитать лонгрид</a>
             </div>
           </div>
@@ -1098,6 +1258,15 @@
           }
         }
       });
+    });
+
+    const requestForm = document.getElementById("requestForm");
+    const formStatus = document.getElementById("formStatus");
+
+    requestForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      formStatus.classList.add("show");
+      requestForm.reset();
     });
   </script>
 </body>
